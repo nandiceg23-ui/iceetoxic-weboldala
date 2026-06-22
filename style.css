@@ -23,7 +23,7 @@ body {
     min-height: 100vh;
 }
 
-/* Tiszta CSS Animált Háttér (Kék Gömbök JS nélkül) */
+/* Tiszta CSS Animált Háttér */
 .bg-orbs {
     position: fixed;
     top: 0; left: 0; width: 100vw; height: 100vh;
@@ -116,14 +116,14 @@ p { font-size: 18px; color: var(--text-gray); line-height: 1.6; margin-bottom: 1
 .highlight { color: var(--accent-green); font-weight: 600; }
 
 /* Rács és Listák (Setup oldalhoz) */
-.setup-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 30px; }
+.setup-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; }
 .setup-block { margin-bottom: 30px; }
 .spec-list { list-style: none; }
 .spec-list li { padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.05); display: flex; justify-content: space-between; font-size: 16px; }
 .spec-list li span:first-child { color: var(--accent-blue); font-weight: 600; }
-.spec-list li span:last-child { color: var(--text-light); }
+.spec-list li span:last-child { color: var(--text-light); text-align: right; padding-left: 10px; }
 
-/* Gombok (Kapcsolat oldalhoz) */
+/* Gombok */
 .btn-discord {
     display: inline-flex; align-items: center; background: #5865F2; color: white;
     text-decoration: none; padding: 15px 35px; border-radius: 8px;
@@ -133,7 +133,7 @@ p { font-size: 18px; color: var(--text-gray); line-height: 1.6; margin-bottom: 1
 .btn-discord:hover { transform: scale(1.05); box-shadow: 0 0 25px rgba(0, 255, 102, 0.6); border-color: var(--accent-green); }
 
 /* Végigjátszások Kártyák */
-.grid-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-top: 20px; }
+.grid-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-top: 20px; }
 .game-card { background: #081026; border-radius: 12px; overflow: hidden; border: 1px solid rgba(0, 210, 255, 0.1); text-decoration: none; color: white; display: block; transition: all 0.4s ease; }
 .game-card:hover { transform: translateY(-10px); border-color: var(--accent-green); box-shadow: 0 15px 30px rgba(0, 255, 102, 0.2); }
 .game-img-container { width: 100%; height: 180px; background: #0d1b3e; position: relative; }
@@ -141,3 +141,65 @@ p { font-size: 18px; color: var(--text-gray); line-height: 1.6; margin-bottom: 1
 .game-info { padding: 20px; background: rgba(10, 20, 42, 0.8); }
 .game-title { font-size: 18px; font-weight: 600; transition: color 0.3s; }
 .game-card:hover .game-title { color: var(--accent-green); }
+
+
+/* ==========================================================================
+   MOBIL NÉZET (Automatikus elrendezés telefonokra és tabletekre)
+   ========================================================================== */
+@media (max-width: 768px) {
+    /* Felső menüsáv átrendezése, hogy ne lógjon ki */
+    header {
+        padding: 15px 20px;
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+        position: absolute; /* Mobilon jobb ha görgethető, nem takar ki sok helyet */
+    }
+
+    .logo {
+        font-size: 20px;
+    }
+
+    nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .nav-link {
+        font-size: 14px;
+        padding: 5px 10px;
+    }
+
+    /* Fő tartalom eltolása a menü miatt */
+    main {
+        margin-top: 140px;
+        padding: 20px 10px;
+    }
+
+    .card {
+        padding: 25px 20px; /* Kisebb belső helykitöltés mobilon */
+    }
+
+    h1 {
+        font-size: 28px; /* Kisebb címek, hogy elférjenek egy sorban */
+    }
+
+    h2 {
+        font-size: 22px;
+    }
+
+    p {
+        font-size: 15px;
+    }
+
+    /* A setupok és játékkártyák kényszerített 1 oszlopos elrendezése mobilon */
+    .setup-grid, .grid-cards {
+        grid-template-columns: 1fr !important;
+        gap: 20px;
+    }
+
+    .spec-list li {
+        font-size: 14px;
+    }
+}
